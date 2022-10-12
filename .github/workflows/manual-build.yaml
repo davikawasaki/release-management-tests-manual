@@ -33,7 +33,7 @@ jobs:
       - name: Echo environment variable
         run: |
           echo ${{ steps.set_env_by_tag.outputs.ENV }}
-          echo ${{ (steps.set_env_by_tag.outputs.ENV == 'qa' || 'staging' ) && 'dev' || 'prod' }}
+          echo ${{ (steps.set_env_by_tag.outputs.ENV == 'qa' || steps.set_env_by_tag.outputs.ENV == 'staging') && 'dev' || 'prod' }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
